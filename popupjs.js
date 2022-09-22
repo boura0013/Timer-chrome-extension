@@ -98,6 +98,9 @@ var startTimerButton = document.getElementById("startTimer");
 /// Code to execute when we click the button to start the timer
 startTimerButton.onclick = function(){
     // Get the inputted values for hours, minutes and seconds
+    chrome.runtime.sendMessage({message: "start BG timer"}, (response) => {
+        console.log(response.message);
+      });
 var hours = document.getElementById("timerLengthHoursInput").value;
 var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
@@ -123,7 +126,6 @@ if(seconds == ""){
 }
 var hoursInSeconds = hours * 60 * 60;
 var minutesInSeconds = minutes * 60;
-console.log("HoursInSeconds:" + hoursInSeconds + "minutesInSeconds:" + minutesInSeconds + "seconds:" + seconds);
 var totalSeconds = hoursInSeconds + minutesInSeconds + parseInt(seconds);
 var notificationOptions = {
     type: 'basic',
@@ -153,7 +155,6 @@ var currentSeconds = parseInt(seconds);
 function timerTick(){
     // Code to execute every 1000 ms
     if(checkIfTimerDone() == false){
-        console.log("Timer ticked");
         if(currentSeconds == 0){
             if(currentMinutes == 0){
                 currentHours = currentHours - 1;
@@ -164,7 +165,6 @@ function timerTick(){
 
         }
         currentSeconds = currentSeconds - 1;
-        console.log("Current Hours: " + currentHours + " Current minutes: " + currentMinutes + " Current Seconds: " + currentSeconds);
         getLengthFormatted(currentHours, currentMinutes, currentSeconds);
         i++;
     }
