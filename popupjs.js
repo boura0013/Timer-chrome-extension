@@ -98,6 +98,7 @@ var startTimerButton = document.getElementById("startTimer");
 /// Code to execute when we click the button to start the timer
 startTimerButton.onclick = function(){
     // Get the inputted values for hours, minutes and seconds
+    // TODO: send TotalSeconds so that setTimeout in bg js becomes adaptable
     chrome.runtime.sendMessage({message: "start BG timer"}, (response) => {
         console.log(response.message);
       });

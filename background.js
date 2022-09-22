@@ -9,12 +9,14 @@ function timerRing(){
     
     }
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
-    var myAudio = new Audio(chrome.runtime.getURL("timer alarm.mp3")); 
-    myAudio.play();
+    //var myAudio = new Audio(chrome.runtime.getURL("timer alarm.mp3")); 
+    //myAudio.play();
+    console.log("Timer ring function executed");
 }
+// TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
       if (request.message === "start BG timer")
-        setTimeout(timerRing(), 5000);
+        setTimeout(timerRing, 1);
         sendResponse({message: "start BG timer message received & acknowledged"});
     });
