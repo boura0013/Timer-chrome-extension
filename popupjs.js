@@ -140,9 +140,9 @@ function checkIfTimerDone(){
     if(i == totalSeconds){
         clearInterval(timerTickInterval);
         console.log("Interval cleared");
-        chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
-        var myAudio = new Audio (chrome.runtime.getURL("timer alarm.mp3")); 
-        myAudio.play();
+        //chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
+        //var myAudio = new Audio (chrome.runtime.getURL("timer alarm.mp3")); 
+        //myAudio.play();
         return true; 
     }
     else{
