@@ -1,0 +1,89 @@
+﻿html {
+    min-height: 400px;
+    min-width: 600px;
+    overflow: hidden;
+    background: darkseagreen;
+}
+label {
+    display: inline-block;
+    text-align: right;
+}
+#timerLengthHoursLabel {
+    width: 50px;
+    line-height: 48px;
+    margin-bottom: 10px;
+}
+#extensionTitle {
+    color: darkcyan;
+}
+#timerLengthHoursInput {
+    position: absolute;
+    right: 485px;
+    bottom: 300px;
+}
+#timerLengthMinutesInput {
+    position: absolute;
+    right: 250px;
+    bottom: 300px;
+}
+#timerLengthMinutesLabel {
+    line-height: 48px;
+    margin-bottom: 10px;
+    width: 225px;
+}
+#timerLengthSecondsInput {
+    position: absolute;
+    right: 25px;
+    bottom: 300px;
+}
+#timerLengthSecondsLabel {
+    line-height: 48px;
+    margin-bottom: 10px;
+    width: 225px;
+}
+#invalidInputError {
+    color: red;
+    position: absolute;
+    right: 250px;
+    bottom: 315px;
+    display: none;
+}
+#timerLengthRemainingGUI {
+    color: darkmagenta;
+    position: absolute;
+    right: 185px;
+    bottom: 160px;
+    display: block;
+}
+#startTimer {
+    color: darkcyan;
+    background-color: greenyellow;
+    position: absolute;
+    bottom: 150px;
+    right: 250px;
+    display: block;
+}
+#stopTimer {
+    color: #5448B7;
+    background-color: red;
+    position: absolute;
+    bottom: 100px;
+    right: 340px;
+    display: block;
+}
+#restartTimer {
+    color: #5448B7;
+    background-color: red;
+    position: absolute;
+    bottom: 100px;
+    right: 150px;
+    display: block;
+}
+#pauseTimer {
+    color: #F1540E;
+    background-color: yellow;
+    position: absolute;
+    bottom: 50px;
+    right: 245px;
+    display: block;
+}

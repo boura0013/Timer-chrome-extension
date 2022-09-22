@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popupstyle.css" />
+</head>
+<body>
+    <center><h1 id="extensionTitle">Timer extension</h1></center>
+    <h4 id="invalidInputError">Invalid input!</h4>
+    <form>
+        <div id="timerLengthEnter">
+            <label id="timerLengthHoursLabel" for="timerLengthInputHours">Hours:</label>
+            <input type="text" id="timerLengthHoursInput" name="timerLengthInputHours" size="2"/>
+            <label id="timerLengthMinutesLabel" for="timerLengthInputMinutes">Minutes:</label>
+            <input type="text" id="timerLengthMinutesInput" name="timerLengthInputMinutes" size="2" />
+            <label id="timerLengthSecondsLabel" for="timerLengthInputSeconds">Seconds:</label>
+            <input type="text" id="timerLengthSecondsInput" name="timerLengthInputSeconds" size="2"/>
+        </div>
+        <button type="button" id="startTimer">Start timer</button>
+    </form>
+    <font size="6">
+    <h1 id="timerLengthRemainingGUI">0:00:00</h1>
+     </font>
+    <button id="stopTimer">Stop timer</button>
+    <button id="pauseTimer">Pause timer</button>
+    <button id="restartTimer">Restart timer</button>
+    <script src="popupjs.js"></script>
+</body>
+</html>

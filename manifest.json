@@ -1,0 +1,29 @@
+{
+  "name": "Timer extension",
+  "description": "Create timers in your browser",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "/images/timer16x.png",
+    "32": "/images/timer32x.png",
+    "48": "/images/timer48x.png",
+    "128": "/images/timer128x.png"
+  },
+  "permissions": [
+    "notifications",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "/images/timer16x.png",
+      "32": "/images/timer32x.png",
+      "48": "/images/timer48x.png",
+      "128":  "/images/timer128x.png"
+    },
+    "default_title": "Click me",
+    "default_popup": "popup.html"
+    }
+  }
