@@ -99,9 +99,6 @@ var startTimerButton = document.getElementById("startTimer");
 startTimerButton.onclick = function(){
     // Get the inputted values for hours, minutes and seconds
     // TODO: send TotalSeconds so that setTimeout in bg js becomes adaptable
-    chrome.runtime.sendMessage({message: "start BG timer"}, (response) => {
-        console.log(response.message);
-      });
 var hours = document.getElementById("timerLengthHoursInput").value;
 var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
@@ -128,6 +125,10 @@ if(seconds == ""){
 var hoursInSeconds = hours * 60 * 60;
 var minutesInSeconds = minutes * 60;
 var totalSeconds = hoursInSeconds + minutesInSeconds + parseInt(seconds);
+console.log("Timer onclick triggered");
+chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds}, (response) => {
+    console.log(response.message);
+  });
 var notificationOptions = {
     type: 'basic',
     title: 'Timer up!',

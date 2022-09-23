@@ -16,7 +16,10 @@ function timerRing(){
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
-      if (request.message === "start BG timer")
-        setTimeout(timerRing, 1);
+        console.log("Message received");
+      if (request.message.slice(0,14) === "start BG timer"){
+        console.log(request.message);
+        setTimeout(timerRing, parseInt(request.message.slice(14, 20)));
         sendResponse({message: "start BG timer message received & acknowledged"});
+      }
     });
