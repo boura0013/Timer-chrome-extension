@@ -1,5 +1,6 @@
 // JavaScript source code
 function timerRing(){
+    var myAudio = new Audio(chrome.runtime.getURL("timerEnd.mp3")); 
     var notificationOptions = {
         type: 'basic',
         title: 'Timer up!',
@@ -9,8 +10,7 @@ function timerRing(){
     
     }
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
-    //var myAudio = new Audio(chrome.runtime.getURL("timer alarm.mp3")); 
-    //myAudio.play();
+    myAudio.play();
     console.log("Timer ring function executed");
 }
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         console.log("Message received");
       if (request.message.slice(0,14) === "start BG timer"){
-        console.log(request.message);
+        console.log("SetTimeout started for: " + parseInt(request.message.slice(14, 20)))
         setTimeout(timerRing, parseInt(request.message.slice(14, 20)));
         sendResponse({message: "start BG timer message received & acknowledged"});
       }
