@@ -1,6 +1,5 @@
 // JavaScript source code
 function timerRing(){
-    var myAudio = new Audio(chrome.runtime.getURL("timerEnd.mp3")); 
     var notificationOptions = {
         type: 'basic',
         title: 'Timer up!',
@@ -10,7 +9,6 @@ function timerRing(){
     
     }
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
-    myAudio.play();
     console.log("Timer ring function executed");
 }
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
