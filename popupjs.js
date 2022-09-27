@@ -1,6 +1,15 @@
 // Declare variables
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
+// Add msg listener
+chrome.runtime.onMessage.addListener(
+    (request, sender, sendResponse) => {
+        console.log("Message received");
+      if (request.message === "Start Playing notification noise"){
+        var myAudio = new Audio(chrome.runtime.getURL("timerEnd.mp3"));
+        myAudio.play();
+      }
+    });
 function checkForValidInput(hInput, mInput, sInput){
     if(hInput == "" && mInput == "" && sInput == ""){
     return false;
@@ -151,14 +160,6 @@ function checkIfTimerDone(){
 var currentHours = parseInt(hours);
 var currentMinutes = parseInt(minutes);
 var currentSeconds = parseInt(seconds);
-chrome.runtime.onMessage.addListener(
-    (request, sender, sendResponse) => {
-        console.log("Message received");
-      if (request.message === "Start Playing notification noise"){
-        var myAudio = new Audio(chrome.runtime.getURL("timerEnd.mp3"));
-        myAudio.play();
-      }
-    });
 function timerTick(){
     // Code to execute every 1000 ms
     if(checkIfTimerDone() == false){

@@ -1,6 +1,7 @@
 // JavaScript source code
 function sendTimerDoneMSG(){
   chrome.runtime.sendMessage({message: "Start Playing notification noise"});
+  console.log("message sent to start noise");
 }
 function timerRing(){
     var notificationOptions = {
@@ -24,7 +25,7 @@ chrome.runtime.onMessage.addListener(
         console.log("Message received");
       if (request.message.slice(0,14) === "start BG timer"){
         console.log("SetTimeout started for: " + parseInt(request.message.slice(14, 20)))
-        setTimeout(timerRing, parseInt(request.message.slice(14, 20)) * 1000);
+        setTimeout(timerRing, parseInt(request.message.slice(14, 20)));
         sendResponse({message: "start BG timer message received & acknowledged"});
       }
     });
