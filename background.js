@@ -12,6 +12,7 @@ function timerRing(){
     chrome.tabs.create({
       url: "popup.html"
     })
+    setTimeout(sendTimerDoneMSG, 5000);
     chrome.runtime.sendMessage({message: "Start Playing notification noise"});
     console.log("Timer ring function executed");
 }
@@ -21,7 +22,7 @@ chrome.runtime.onMessage.addListener(
         console.log("Message received");
       if (request.message.slice(0,14) === "start BG timer"){
         console.log("SetTimeout started for: " + parseInt(request.message.slice(14, 20)))
-        setTimeout(timerRing, parseInt(request.message.slice(14, 20)));
+        setTimeout(timerRing, parseInt(request.message.slice(14, 20)) * 1000);
         sendResponse({message: "start BG timer message received & acknowledged"});
       }
     });
