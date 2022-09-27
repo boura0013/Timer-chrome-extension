@@ -1,4 +1,7 @@
 // JavaScript source code
+function sendTimerDoneMSG(){
+  chrome.runtime.sendMessage({message: "Start Playing notification noise"});
+}
 function timerRing(){
     var notificationOptions = {
         type: 'basic',
@@ -13,7 +16,6 @@ function timerRing(){
       url: "popup.html"
     })
     setTimeout(sendTimerDoneMSG, 5000);
-    chrome.runtime.sendMessage({message: "Start Playing notification noise"});
     console.log("Timer ring function executed");
 }
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
