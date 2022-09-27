@@ -142,9 +142,6 @@ function checkIfTimerDone(){
     if(i == totalSeconds){
         clearInterval(timerTickInterval);
         console.log("Interval cleared");
-        //chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
-        //var myAudio = new Audio (chrome.runtime.getURL("timer alarm.mp3")); 
-        //myAudio.play();
         return true; 
     }
     else{
@@ -154,6 +151,14 @@ function checkIfTimerDone(){
 var currentHours = parseInt(hours);
 var currentMinutes = parseInt(minutes);
 var currentSeconds = parseInt(seconds);
+chrome.runtime.onMessage.addListener(
+    (request, sender, sendResponse) => {
+        console.log("Message received");
+      if (request.message === "Start Playing notification noise"){
+        var myAudio = new Audio(chrome.runtime.getURL("timerEnd.mp3"));
+        myAudio.play();
+      }
+    });
 function timerTick(){
     // Code to execute every 1000 ms
     if(checkIfTimerDone() == false){

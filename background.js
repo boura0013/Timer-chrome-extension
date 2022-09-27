@@ -9,6 +9,10 @@ function timerRing(){
     
     }
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
+    chrome.tabs.create({
+      url: "popup.html"
+    })
+    chrome.runtime.sendMessage({message: "Start Playing notification noise"});
     console.log("Timer ring function executed");
 }
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
