@@ -14,9 +14,9 @@ function timerRing(){
     }
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
 
-    //chrome.tabs.create({
-     // url: "timer alarm.html"
-    //})
+    chrome.tabs.create({
+     url: "timer alarm.html"
+    })
     
     console.log("Timer ring function executed");
 }
@@ -24,7 +24,7 @@ function timerRing(){
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         console.log("Message received in background js: " + request.message);
-        console.log("SetTimeout started for: " + parseInt(request.message.slice(14, 20)))
-        setTimeout(timerRing, parseInt(request.message.slice(14, 20)));
+        console.log("SetTimeout started for: " + parseInt(request.message.slice(14, 20)) * 1000)
+        setTimeout(timerRing, parseInt(request.message.slice(14, 20)) * 1000);
         sendResponse({message: "start BG timer message received & acknowledged"});
     });

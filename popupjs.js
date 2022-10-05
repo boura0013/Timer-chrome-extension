@@ -2,6 +2,18 @@
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
 function checkForValidInput(hInput, mInput, sInput,){
+    var htotalsecs = hInput;
+    var mtotalsecs = mInput;
+    var stotalsecs = sInput;
+    if(hInput == ""){
+        htotalsecs = 0;
+    }
+    if(mInput == ""){
+        mtotalsecs = 0;
+    }
+    if(sInput == ""){
+        stotalsecs = 0;
+    }
     var totalSeconds = parseInt(hInput) * 60 * 60 + parseInt(mInput) * 60 + parseInt(sInput);
     console.log("total seconds in popupjs is equal to " + totalSeconds);
     chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds},);
@@ -170,5 +182,5 @@ function timerTick(){
         i++;
     }
 }
-const timerTickInterval = setInterval(timerTick, 1);
+const timerTickInterval = setInterval(timerTick, 1000);
 }
