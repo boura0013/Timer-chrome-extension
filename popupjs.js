@@ -1,15 +1,6 @@
 // Declare variables
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
-// Add msg listener
-chrome.runtime.onMessage.addListener(
-    (request, sender, sendResponse) => {
-        console.log("Message received");
-      if (request.message === "Start Playing notification noise"){
-        var myAudio = new Audio(chrome.runtime.getURL("timerEnd.mp3"));
-        myAudio.play();
-      }
-    });
 function checkForValidInput(hInput, mInput, sInput){
     if(hInput == "" && mInput == "" && sInput == ""){
     return false;
@@ -135,9 +126,7 @@ var hoursInSeconds = hours * 60 * 60;
 var minutesInSeconds = minutes * 60;
 var totalSeconds = hoursInSeconds + minutesInSeconds + parseInt(seconds);
 console.log("Timer onclick triggered");
-chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds}, (response) => {
-    console.log(response.message);
-  });
+chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds},);
 var notificationOptions = {
     type: 'basic',
     title: 'Timer up!',
