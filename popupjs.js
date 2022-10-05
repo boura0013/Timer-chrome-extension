@@ -14,7 +14,7 @@ function checkForValidInput(hInput, mInput, sInput,){
     if(sInput == ""){
         stotalsecs = 0;
     }
-    var totalSeconds = parseInt(hInput) * 60 * 60 + parseInt(mInput) * 60 + parseInt(sInput);
+    var totalSeconds = parseInt(htotalsecs) * 60 * 60 + parseInt(mtotalsecs) * 60 + parseInt(stotalsecs);
     console.log("total seconds in popupjs is equal to " + totalSeconds);
     chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds},);
     if(hInput == "" && mInput == "" && sInput == ""){
