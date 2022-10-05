@@ -14,19 +14,17 @@ function timerRing(){
     }
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
 
-    chrome.tabs.create({
-      url: "timer alarm.html"
-    })
+    //chrome.tabs.create({
+     // url: "timer alarm.html"
+    //})
     
     console.log("Timer ring function executed");
 }
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable
 chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
-        console.log("Message received");
-      if (request.message.slice(0,14) === "start BG timer"){
+        console.log("Message received in background js: " + request.message);
         console.log("SetTimeout started for: " + parseInt(request.message.slice(14, 20)))
         setTimeout(timerRing, parseInt(request.message.slice(14, 20)));
         sendResponse({message: "start BG timer message received & acknowledged"});
-      }
     });
