@@ -15,9 +15,9 @@ function timerRing(){
     chrome.notifications.create('timerEndNotification', notificationOptions, function(id) {});
     console.log("Timer ring function executed");
     // chrome.tabs.create causing idk why???
-    //chrome.tabs.create({
-     //url: "timer alarm.html"
-    //})
+    /*chrome.tabs.create({
+     url: "timer alarm.html"
+    }); */
     
 }
 // TODO: PASS OVER TotalSeconds in msg to make SetTimeout adaptable

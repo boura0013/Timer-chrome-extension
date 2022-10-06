@@ -41,6 +41,7 @@ if(sInput < 0){
 if(hInput < 0){
     return false;
 }
+
 }
 function delay() {
     function delay(d) {
@@ -118,9 +119,6 @@ startTimerButton.onclick = function(){
 var hours = document.getElementById("timerLengthHoursInput").value;
 var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
-var hoursInSeconds = hours * 60 * 60;
-var minutesInSeconds = minutes * 60;
-var totalSeconds = 1000; 
 //hoursInSeconds + minutesInSeconds + parseInt(seconds);
 // Run them through our function and if it is incorrect set the rest of the code to not execute and display an error message
 if(checkForValidInput(hours, minutes, seconds) == false){
@@ -128,9 +126,10 @@ if(checkForValidInput(hours, minutes, seconds) == false){
     document.getElementById("timerLengthRemainingGUI").style.color = "red";
 }
 // If the input was invalid then set the variable to true so the user can try again
+delay(1000);
 printTimerLengthRemaining = true;
 // Code to make timer tick
-delay(1000);
+var totalSeconds = parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
 getLengthFormatted(hours, minutes, seconds);
 var i = 0;
 // Exception check
