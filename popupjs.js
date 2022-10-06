@@ -2,21 +2,6 @@
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
 function checkForValidInput(hInput, mInput, sInput,){
-    var htotalsecs = hInput;
-    var mtotalsecs = mInput;
-    var stotalsecs = sInput;
-    if(hInput == ""){
-        htotalsecs = 0;
-    }
-    if(mInput == ""){
-        mtotalsecs = 0;
-    }
-    if(sInput == ""){
-        stotalsecs = 0;
-    }
-    var totalSeconds = parseInt(htotalsecs) * 60 * 60 + parseInt(mtotalsecs) * 60 + parseInt(stotalsecs);
-    console.log("total seconds in popupjs is equal to " + totalSeconds);
-    chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds},);
     if(hInput == "" && mInput == "" && sInput == ""){
     return false;
 }
@@ -128,10 +113,6 @@ if(checkForValidInput(hours, minutes, seconds) == false){
 // If the input was invalid then set the variable to true so the user can try again
 delay(1000);
 printTimerLengthRemaining = true;
-// Code to make timer tick
-var totalSeconds = parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
-getLengthFormatted(hours, minutes, seconds);
-var i = 0;
 // Exception check
 if(hours == ""){
     hours = 0;
@@ -142,7 +123,11 @@ if(minutes == ""){
 if(seconds == ""){
     seconds = 0;
 }
-
+var totalSeconds = parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
+console.log("total seconds in popupjs is equal to " + totalSeconds);
+chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds},);
+getLengthFormatted(hours, minutes, seconds);
+var i = 0;
 var notificationOptions = {
     type: 'basic',
     title: 'Timer up!',
