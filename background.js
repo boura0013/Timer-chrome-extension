@@ -10,7 +10,6 @@ chrome.alarms.onAlarm.addListener(() => {
     }
     console.log("chrome.alarms listener worked");
     chrome.notifications.create('timerEndNotification', notificationOptions);
-        // chrome.tabs.create causing idk why???
     chrome.tabs.create({
      url: "timer alarm.html"
     });
