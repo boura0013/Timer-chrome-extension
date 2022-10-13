@@ -1,5 +1,7 @@
 // JavaScript source code
 chrome.alarms.onAlarm.addListener(() => {
+    // Variables for chrome.notifications.create
+    // Executed on timer end
     var notificationOptions = {
         type: 'basic',
         title: 'Timer up!',
@@ -15,6 +17,7 @@ chrome.alarms.onAlarm.addListener(() => {
     });
   });
 chrome.runtime.onMessage.addListener(
+    // Should run when the start timer button is pressed
     (request, sender, sendResponse) => {
         console.log("Message received in background js: " + request.message);
         console.log("Alarm set for: " + parseInt(request.message.slice(14, 20)) / 60 + " minutes");
