@@ -1,4 +1,5 @@
 // Declare variables
+var timerRunning = false;
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
 function checkForValidInput(hInput, mInput, sInput,){
@@ -101,6 +102,7 @@ startTimerButton.onclick = function(){
     console.log("Start timer button pressed");
     // Get the inputted values for hours, minutes and seconds
     // TODO: send TotalSeconds so that setTimeout in bg js becomes adaptable
+timerRunning = true;
 var hours = document.getElementById("timerLengthHoursInput").value;
 var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
@@ -168,3 +170,10 @@ function timerTick(){
 }
 const timerTickInterval = setInterval(timerTick, 1000);
 }
+var stopTimerButton = document.getElementById("stopTimer");
+stopTimerButton.onclick = function(){
+    if(timerRunning == true){
+        chrome.runtime.sendMessage({message: "stop BG timer"},);
+    }
+}
+

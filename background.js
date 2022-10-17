@@ -19,12 +19,18 @@ chrome.alarms.onAlarm.addListener(() => {
 chrome.runtime.onMessage.addListener(
     // Should run when the start timer button is pressed
     (request, sender, sendResponse) => {
-        if(request.message(0,14) == "start BG timer" )
-        console.log("Message received in background js: " + request.message);
-        console.log("Alarm set for: " + parseInt(request.message.slice(14, 20)) / 60 + " minutes");
-        // Use chrome.alarms in case service worker is killed while timer is running(MV3 pain)
-        chrome.alarms.create({delayInMinutes: parseInt(request.message.slice(14, 20)) / 60})
-        sendResponse({message: "start BG timer message received & acknowledged"});
+        if(request.message.slice(0,14) == "start BG timer" ){
+            console.log("Message received in background js: " + request.message);
+            console.log("Alarm set for: " + parseInt(request.message.slice(14, 20)) / 60 + " minutes");
+            // Use chrome.alarms in case service worker is killed while timer is running(MV3 pain)
+            chrome.alarms.create({delayInMinutes: parseInt(request.message.slice(14, 20)) / 60})
+            sendResponse({message: "start BG timer message received & acknowledged"});
+        }
+        else if(request.message.slice(0,13) == "stop BG timer"){
+            console.log("Message received in background js: " + request.message);
+            console.log("Timer cleared");
+            chrome.alarms.clearAll(); 
+        }
     });
 
     
