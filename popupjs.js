@@ -153,7 +153,7 @@ var currentMinutes = parseInt(minutes);
 var currentSeconds = parseInt(seconds);
 function timerTick(){
     // Code to execute every 1000 ms
-    if(checkIfTimerDone() == false){
+    if(checkIfTimerDone() == false && timerRunning == true){
         if(currentSeconds == 0){
             if(currentMinutes == 0){
                 currentHours = currentHours - 1;
@@ -166,6 +166,9 @@ function timerTick(){
         currentSeconds = currentSeconds - 1;
         getLengthFormatted(currentHours, currentMinutes, currentSeconds);
         i++;
+    }
+    else if(timerRunning == false){
+        timerRemainingGUI.innerHTML = "0:00:00";
     }
 }
 const timerTickInterval = setInterval(timerTick, 1000);
