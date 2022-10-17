@@ -56,7 +56,6 @@ label {
     display: block;
 }
 #startTimer {
-    color: darkcyan;
     background-color: greenyellow;
     position: absolute;
     bottom: 150px;
@@ -64,26 +63,10 @@ label {
     display: block;
 }
 #stopTimer {
-    color: #5448B7;
+    color: #2C0644;
     background-color: red;
     position: absolute;
     bottom: 100px;
-    right: 340px;
-    display: block;
-}
-#restartTimer {
-    color: #5448B7;
-    background-color: red;
-    position: absolute;
-    bottom: 100px;
-    right: 150px;
-    display: block;
-}
-#pauseTimer {
-    color: #F1540E;
-    background-color: yellow;
-    position: absolute;
-    bottom: 50px;
-    right: 245px;
+    right: 250px;
     display: block;
 }
