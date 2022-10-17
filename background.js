@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(
             chrome.alarms.create({delayInMinutes: parseInt(request.message.slice(14, 20)) / 60})
             sendResponse({message: "start BG timer message received & acknowledged"});
         }
-        else if(request.message.slice(0,13) == "stop BG timer"){
+        else if(request.message == "stop BG timer"){
             console.log("Message received in background js: " + request.message);
             console.log("Timer cleared");
             chrome.alarms.clearAll(); 
