@@ -167,9 +167,6 @@ function timerTick(){
         getLengthFormatted(currentHours, currentMinutes, currentSeconds);
         i++;
     }
-    else if(timerRunning == false){
-        timerRemainingGUI.innerHTML = "0:00:00";
-    }
 }
 const timerTickInterval = setInterval(timerTick, 1000);
 }
@@ -178,6 +175,7 @@ stopTimerButton.onclick = function(){
     if(timerRunning == true){
         chrome.runtime.sendMessage({message: "stop BG timer"},);
         timerRunning = false;
+        timerRemainingGUI.innerHTML = "0:00:00";
     }
     else{
         timerRemainingGUI.innerHTML = "No timer running";
