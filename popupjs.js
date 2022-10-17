@@ -177,6 +177,7 @@ var stopTimerButton = document.getElementById("stopTimer");
 stopTimerButton.onclick = function(){
     if(timerRunning == true){
         chrome.runtime.sendMessage({message: "stop BG timer"},);
+        timerRunning = false;
     }
     else{
         timerRemainingGUI.innerHTML = "No timer running";
