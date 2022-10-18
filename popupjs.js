@@ -172,13 +172,7 @@ const timerTickInterval = setInterval(timerTick, 1000);
 }
 var stopTimerButton = document.getElementById("stopTimer");
 stopTimerButton.onclick = function(){
-    if(timerRunning == true){
         chrome.runtime.sendMessage({message: "stop BG timer"},);
-        timerRunning = false;
         document.getElementById("timerLengthRemainingGUI").innerHTML = "0:00:00";
-    }
-    else{
-        document.getElementById("timerLengthRemainingGUI").innerHTML = "No timer running";
-    }
 }
 
