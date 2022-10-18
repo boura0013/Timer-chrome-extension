@@ -1,4 +1,5 @@
 // Declare variables
+var timerRunning = false;
 var i = 0;
 var totalSeconds = 0;
 var dontAddFirstSemicolon = false;
@@ -176,5 +177,6 @@ stopTimerButton.onclick = function(){
         chrome.runtime.sendMessage({message: "stop BG timer"},);
         document.getElementById("timerLengthRemainingGUI").innerHTML = "0:00:00";
         i = totalSeconds;
+        timerRunning = false;
 }
 
