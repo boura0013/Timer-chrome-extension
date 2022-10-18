@@ -176,6 +176,10 @@ var stopTimerButton = document.getElementById("stopTimer");
 stopTimerButton.onclick = function(){
         chrome.runtime.sendMessage({message: "stop BG timer"},);
         document.getElementById("timerLengthRemainingGUI").innerHTML = "0:00:00";
+        totalSeconds = 0;
+        currentHours = 0;
+        currentMinutes = 0;
+        currentSeconds = 0;
         i = totalSeconds;
         timerRunning = false;
 }
