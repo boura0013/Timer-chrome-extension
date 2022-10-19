@@ -173,7 +173,7 @@ function timerTick(){
         chrome.storage.sync.set({ "timerValue" :[currentHours, currentMinutes, currentSeconds]}, function(){
             console.log("Chrome.storage.sync.set executed");
         });
-        // Cannot retrieve data for some reason??? output is [object object]
+        // Returns the current timer value as an array of three in this format timerValue = [currentHours, currentMinutes, currentSeconds]
         chrome.storage.sync.get("timerValue", function(items){
             console.log(items);
         });
