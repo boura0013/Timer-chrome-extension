@@ -110,7 +110,7 @@ var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
 // Add sync storage for timer here
 var timerValuesArray = [hours, minutes, seconds];
-chrome.storage.sync.set({list: timerValuesArray});
+chrome.storage.sync.set({"timerValue": timerValuesArray});
 //hoursInSeconds + minutesInSeconds + parseInt(seconds);
 // Run them through our function and if it is incorrect set the rest of the code to not execute and display an error message
 if(checkForValidInput(hours, minutes, seconds) == false){
@@ -170,7 +170,7 @@ function timerTick(){
         }
         currentSeconds = currentSeconds - 1;
         getLengthFormatted(currentHours, currentMinutes, currentSeconds);
-        chrome.storage.sync.set({list: [currentHours,currentMinutes, currentSeconds]});
+        chrome.storage.sync.set({"timerValue" :[currentHours, currentMinutes, currentSeconds]})
         i++;
     }
 }
