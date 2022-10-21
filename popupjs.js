@@ -19,18 +19,6 @@ chrome.storage.sync.get("timerValue", function(items){
         StartTimerButtonOnclick();
     }
 });
-document.getElementById("loadData").onclick = function(){
-    console.log("Load data button clicked");
-    chrome.storage.sync.get("timerValue", function(items){
-        console.log("Fetched items under");
-        console.log(items);
-        document.getElementById("timerLengthHoursInput").value = parseInt(items.timerValue[0]);
-        document.getElementById("timerLengthMinutesInput").value = parseInt(items.timerValue[1]);
-        document.getElementById("timerLengthSecondsInput").value = parseInt(items.timerValue[2]);
-        // Run start timer onclick
-        StartTimerButtonOnclick();
-    });
-}
 function checkForValidInput(hInput, mInput, sInput,){
     if(hInput == "" && mInput == "" && sInput == ""){
     return false;
