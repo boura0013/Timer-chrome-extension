@@ -125,7 +125,6 @@ var hours = document.getElementById("timerLengthHoursInput").value;
 var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
 // Add sync storage for timer here
-chrome.storage.sync.set({ "timerValue" : [hours, minutes, seconds]});
 //hoursInSeconds + minutesInSeconds + parseInt(seconds);
 // Run them through our function and if it is incorrect set the rest of the code to not execute and display an error message
 if(checkForValidInput(hours, minutes, seconds) == false){
@@ -145,6 +144,7 @@ if(minutes == ""){
 if(seconds == ""){
     seconds = 0;
 }
+chrome.storage.sync.set({ "timerValue" : [hours, minutes, seconds]});
 var totalSeconds = parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
 console.log("total seconds in popupjs is equal to " + totalSeconds);
 chrome.runtime.sendMessage({message: "start BG timer " + totalSeconds},);
