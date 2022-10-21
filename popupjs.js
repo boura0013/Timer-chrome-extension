@@ -5,6 +5,20 @@ var totalSeconds = 0;
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
 // Load previous timer from chrome.storage.sync when button is clicked
+chrome.storage.sync.get("timerValue", function(items){
+    if(items.timerValue[0] == 0 && items.timerValue[1] == 0 && items.timerValue[2] == 0){
+        console.log("No save to restore");
+    }
+    else{
+        console.log("Found a save to restore");
+        console.log("Fetched items under");
+        console.log(items);
+        document.getElementById("timerLengthHoursInput").value = parseInt(items.timerValue[0]);
+        document.getElementById("timerLengthMinutesInput").value = parseInt(items.timerValue[1]);
+        document.getElementById("timerLengthSecondsInput").value = parseInt(items.timerValue[2]);
+        StartTimerButtonOnclick();
+    }
+});
 document.getElementById("loadData").onclick = function(){
     console.log("Load data button clicked");
     chrome.storage.sync.get("timerValue", function(items){
