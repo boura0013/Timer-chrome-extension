@@ -30,6 +30,7 @@ chrome.runtime.onMessage.addListener(
             console.log("Message received in background js: " + request.message);
             console.log("Timer cleared");
             chrome.alarms.clearAll(); 
+            chrome.storage.sync.set({ "timerValue" : [0,0,0]});
         }
     });
 

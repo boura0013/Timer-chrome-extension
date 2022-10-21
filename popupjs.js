@@ -4,6 +4,19 @@ var i = 0;
 var totalSeconds = 0;
 var dontAddFirstSemicolon = false;
 var dontAddSecondSemicolon = false;
+// Load previous timer from chrome.storage.sync when button is clicked
+document.getElementById("loadData").onclick = function(){
+    console.log("Load data button clicked");
+    chrome.storage.sync.get("timerValue", function(items){
+        console.log("Fetched items under");
+        console.log(items);
+        document.getElementById("timerLengthHoursInput").value = parseInt(items.timerValue[0]);
+        document.getElementById("timerLengthMinutesInput").value = parseInt(items.timerValue[1]);
+        document.getElementById("timerLengthSecondsInput").value = parseInt(items.timerValue[2]);
+        // Run start timer onclick
+        StartTimerButtonOnclick();
+    });
+}
 function checkForValidInput(hInput, mInput, sInput,){
     if(hInput == "" && mInput == "" && sInput == ""){
     return false;
@@ -100,7 +113,8 @@ if(dontAddFirstSemicolon == false && dontAddSecondSemicolon == true){
 var printTimerLengthRemaining = true;
 var startTimerButton = document.getElementById("startTimer");
 /// Code to execute when we click the button to start the timer
-startTimerButton.onclick = function(){
+function StartTimerButtonOnclick(){
+    
     console.log("Start timer button pressed");
     // Get the inputted values for hours, minutes and seconds
     // TODO: send TotalSeconds so that setTimeout in bg js becomes adaptable
@@ -109,8 +123,7 @@ var hours = document.getElementById("timerLengthHoursInput").value;
 var minutes = document.getElementById("timerLengthMinutesInput").value;
 var seconds = document.getElementById("timerLengthSecondsInput").value;
 // Add sync storage for timer here
-var timerValuesArray = [hours, minutes, seconds];
-chrome.storage.sync.set({ "timerValue" : timerValuesArray});
+chrome.storage.sync.set({ "timerValue" : [hours, minutes, seconds]});
 //hoursInSeconds + minutesInSeconds + parseInt(seconds);
 // Run them through our function and if it is incorrect set the rest of the code to not execute and display an error message
 if(checkForValidInput(hours, minutes, seconds) == false){
@@ -170,17 +183,15 @@ function timerTick(){
         }
         currentSeconds = currentSeconds - 1;
         getLengthFormatted(currentHours, currentMinutes, currentSeconds);
-        chrome.storage.sync.set({ "timerValue" :[currentHours, currentMinutes, currentSeconds]}, function(){
-            console.log("Chrome.storage.sync.set executed");
-        });
+        chrome.storage.sync.set({ "timerValue" : [currentHours, currentMinutes, currentSeconds]});
         // Returns the current timer value as an array of three in this format timerValue = [currentHours, currentMinutes, currentSeconds]
-        chrome.storage.sync.get("timerValue", function(items){
-            console.log(items);
-        });
         i++;
     }
 }
 const timerTickInterval = setInterval(timerTick, 1000);
+}
+startTimerButton.onclick = function(){
+    StartTimerButtonOnclick();
 }
 var stopTimerButton = document.getElementById("stopTimer");
 stopTimerButton.onclick = function(){
