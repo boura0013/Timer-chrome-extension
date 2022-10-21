@@ -116,7 +116,6 @@ var printTimerLengthRemaining = true;
 var startTimerButton = document.getElementById("startTimer");
 /// Code to execute when we click the button to start the timer
 function StartTimerButtonOnclick(){
-    
     console.log("Start timer button pressed");
     // Get the inputted values for hours, minutes and seconds
     // TODO: send TotalSeconds so that setTimeout in bg js becomes adaptable

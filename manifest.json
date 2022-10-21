@@ -12,7 +12,8 @@
   "permissions": [
     "notifications",
     "alarms",
-    "storage"
+    "storage",
+    "power"
   ],
   "background": {
     "service_worker": "background.js"
