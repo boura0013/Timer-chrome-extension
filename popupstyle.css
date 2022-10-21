@@ -70,3 +70,11 @@ label {
     right: 250px;
     display: block;
 }
+#timerIMG1{
+    position: absolute;
+    display: block;
+}
+#timerIMG2{
+    position: absolute;
+    display: block;
+}
