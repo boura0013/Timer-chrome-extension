@@ -13,7 +13,7 @@ chrome.alarms.onAlarm.addListener(() => {
     console.log("chrome.alarms listener worked");
     chrome.notifications.create('timerEndNotification', notificationOptions);
     chrome.tabs.create({
-     url: "timer alarm.html"
+     url: "timeralarm.html"
     });
   });
 chrome.runtime.onMessage.addListener(
