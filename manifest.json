@@ -1,6 +1,5 @@
 {
   "name": "Timer extension",
-  "description": "Create timers in your browser",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
